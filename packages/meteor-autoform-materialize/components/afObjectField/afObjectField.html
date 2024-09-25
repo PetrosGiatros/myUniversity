@@ -1,0 +1,15 @@
+<template name="afObjectField_materialize">
+  <div class="card white hoverable autoform-object-field">
+    <div class="card-content blue-text">
+      {{#with afFieldLabelText name=this.name}}
+        <div class="card-title center-align capitalize flow-text">
+          {{this}}
+        </div>
+      {{/with}}
+      {{#if afFieldIsInvalid name=this.name}}
+        <div class="red-text">{{{afFieldMessage name=this.name}}}</div>
+      {{/if}}
+      {{> afQuickFields name=this.name}}
+    </div>
+  </div>
+</template>

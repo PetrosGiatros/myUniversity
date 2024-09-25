@@ -1,0 +1,10 @@
+<template name="afSwitch">
+  <div class="switch">
+    <label for="{{atts.id}}">
+      {{#with atts.falseLabel}}{{this}}{{else}}Off{{/with}}
+      <input type="checkbox" value="{{this.value}}" {{atts}}>
+      <span class="lever"></span>
+      {{#with atts.trueLabel}}{{this}}{{else}}On{{/with}}
+    </label>
+  </div>
+</template>

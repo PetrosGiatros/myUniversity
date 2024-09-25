@@ -1,0 +1,144 @@
+<template name="about">
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper blue lighten-1">
+        <a href="#" class="brand-logo center">My University</a>
+        <ul class="right hide-on-med-and-down">
+
+            {{#if currentUser}}
+              {{> ifLogin}}
+            {{else}}
+              <li><a onclick="Router.go('/')" class="pointer">Home</a></li>
+            {{/if}}
+            <li class="active"><a href="/p/about"><i class="material-icons left">info_outline</i>About Us</a></li>
+            <li id="loginText">
+              {{#if currentUser}}
+                {{> logoutBtn}}
+              {{else}}
+                {{> loginBtn}}
+              {{/if}}
+            </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row">
+      <div class="col s12">
+        <div class="card blue lighten-1 z-depth-2">
+          <div class="card-content white-text">
+            <div class="card-title">
+              <h4>All about the project and the team behind MyUniversity!</h4>
+            </div>
+            <div class="row"></div>
+            <div class="row">
+              <div class="col s12">
+                <h5 class="flow-text">The Team</h5>
+                <p class="flow-text">Our Team consists mainly of 3 inspired teenagers, as you might have seen on the landing page.
+                  We were inspired to change the way students begin studying abroad, or in our case in the US.
+                  The idea came up in October 2015 and after hard work on everyone's part, we are confident in saying we have achieved our goal with MyUniversity.
+                  Without further ado, the people behind the project:</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s6">
+                <h5 class="flow-text">Petros Giatroutsikos</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4">
+                <img src="/images/about/petros.jpg" class="responsive-img" />
+              </div>
+              <div class="col s8">
+                <p class="flow-text">Web Developer</p>
+                <div class="row"></div>
+                <p class="flow-text">Petros was born in Thessaloniki, Greece and is currently 17 years old. From a young age, he was attracted to technology and computers. Also he's fond of math and economics.
+                He can speak English on a native level and he's also into reading literature. He likes Basketball and he used to be a member of a basketball team (Apollon Kalamarias).
+                When he leaves secondary education, he aims to study Information Technology as well as Economics.
+                He's currently quite experienced with HTML, CSS and JavaScript, languages of which most of the site consists of.
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s6">
+                <h5 class="flow-text">Dimitris Dimitrakopoulos</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4">
+                <img src="/images/about/dimitris.jpg" class="responsive-img" />
+              </div>
+              <div class="col s8">
+                <p class="flow-text">Editor</p>
+                <div class="row"></div>
+                <p class="flow-text">
+                  Dimitris, born in Thessaloniki and 17 years old, is an ambitious teenager with a passion for technology and video games. He speaks English on a native level. He also was a member of a Tae-kwon-do club.
+                  He loves hardware and he realised that when he built his first computer at the age of 14.
+                  Thus when he plans to become knowledgeable in all-things-computers as well as a PC builder.
+                  He was responsibe for the Graphic Design (logo, favicon and other pictures) as well as for gathering information and filling our University Database.
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s6">
+                <h5 class="flow-text">George Grivas</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4">
+                <img src="/images/about/grivas.jpg" class="responsive-img" />
+              </div>
+              <div class="col s8">
+                <h5 class="flow-text">Founder, Editor</h5>
+                <div class="row"></div>
+                <p class="flow-text">
+                  Whilst being the youngest in the team (16 years old), George was the largest influence throughout the entire project. He came up with the idea and inspired everyone.
+                  He also speaks English and French on a native level. He once won a French debate competition launched in Thessaloniki in 2014. A year after he was invited to be a member of
+                  the judges in the same competition.
+                  During the last 5 months he came to the conclusion that "no matter how music changes, we must never stop dancing", a truly inspiring analogy of life
+                  He plans to enter law school and eventually become a lawyer.
+                  A true visionary.
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s6">
+                <h5 class="flow-text">Angel "Rain" Hatzaroulas</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <h5 class="flow-text">Mentor Web Developer and Programmer, Editor <span class="little">to an extent</span>.</h5>
+                <div class="row"></div>
+                <p class="controlled-text">Although not an official member of the team, undoubtedly one of the greatest contributors to the project.
+                 Angel, 17 years old, born and living in Athens, was introduced to the project by Petros', who Angel is an online acquaintance of.
+                 He is an expert in Web Development, with advanced knowledge in HTML, CSS, JavaScript, Meteor.js framework,Bootstrap 3, Django an the list goes on an on.
+                 He is also highly skilled in photo editing and fixed some graphical assets for use on the website.
+                Angel taught Petros' everything he knows in terms of Web Development and greatly helped him when he had difficulties.
+                This project would have not looked the same or rather even made possible without his assistance and mentoring.
+                As for his plans for the future, he aims to study Software Engineering or Computer Science in a high-rank University in the UK.
+                We, the main team, can not thank him enough and wish him well on his future endavours.
+                </p>
+              </div>
+            </div>
+            <div class="row"></div>
+            <div class="row">
+              <div class="col s12">
+                <h5 class="flow-text">Technical Details of MyUniversity</h5>
+                <p class="flow-text">MyUniversity was mainly made possible with the use of 2 frameworks: <a href="https://www.meteor.com/" class="yellow-text">Meteor.js</a> and <a href="http://materializecss.com/" class="yellow-text">Materialize.css</a></p>
+                <p class="flow-text">Meteor.js is a full-stack JavaScript Framework that makes things like database management and reactive interfaces super simple.
+                  It is also responsible for the insane loading speeds of MyUniversity.
+                  As for Materialize.css, it is a CSS framework that makes Material Design really accessible and easy to use.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</template>

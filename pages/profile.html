@@ -1,0 +1,158 @@
+<template name="profile">
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper blue lighten-1">
+        <a href="#" class="brand-logo center">My University</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/p/dashboard" class="active"><i class="material-icons left">dashboard</i>Dashboard</a></li>
+          <li class="active"><a href="/p/profile"><i class="material-icons left">perm_identity</i>Profile</a></li>
+          <li><a href="/p/about"><i class="material-icons left">info_outline</i>About Us</a></li>
+          <li id="loginText">
+            {{#if currentUser}}
+              {{> logoutBtn}}
+            {{else}}
+              {{> loginBtn}}
+            {{/if}}
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  {{#if currentUser}}
+    {{> profileContent}}
+  {{else}}
+    {{> redirect}}
+  {{/if}}
+</template>
+
+<template name="profileContent">
+ {{#if $.Session.get 'editMode'}}
+   <div class="container">
+     <div class="row"></div>
+     <div class="row"></div>
+     <div class="row">
+       <div class="col s12">
+         <div class="card white hoverable">
+           <div class="card-content blue-text">
+             <span class="card-title"><h3 class="center-align capitalize">{{username}}</h3></span>
+             {{#autoForm collection="Meteor.users" doc=profile id="updateUser" type="update" autosave=true}}
+               <div class="row">
+                 <div class="col s2 offset-s4">
+                   {{> afQuickField name='profile.firstName'}}
+                 </div>
+                 <div class="col s2">
+                   {{> afQuickField name='profile.lastName'}}
+                 </div>
+               </div>
+               <div class="divider"></div>
+               <div class="section">
+                 <div class="row">
+                   <div class="col s6">
+                     <h4 class="center-align">SAT</h4>
+                   </div>
+                   <div class="col s6">
+                     <h4 class="center-align">Other</h4>
+                   </div>
+                 </div>
+                 <div class="row">
+                   <div class="col s2 offset-s2">
+                     {{> afQuickField name='profile.reading'}}
+                   </div>
+                   <div class="col s2 offset-s4">
+                     {{> afQuickField name='profile.toefl'}}
+                   </div>
+                 </div>
+                 <div class="row">
+                   <div class="col s2 offset-s2">
+                     {{> afQuickField name='profile.math'}}
+                   </div>
+                   <div class="col s2 offset-s4">
+                     {{> afQuickField name='profile.act'}}
+                   </div>
+                 </div>
+                 <div class="row">
+                   <div class="col s2 offset-s2">
+                     {{> afQuickField name='profile.writing'}}
+                   </div>
+                   <div class="col s2 offset-s4">
+                     {{> afQuickField name='profile.gpa'}}
+                   </div>
+                 </div>
+               </div>
+               <div class="card-action">
+                 <div class="row">
+                   <div class="col s1 offset-s11">
+                     <a class="btn-floating btn-large green btn-primary" type="submit">
+                       <i class="material-icons edit">done</i>
+                     </a>
+                   </div>
+                 </div>
+                 <!--<button type="submit" class="btn btn-primary">Save</button>-->
+               </div>
+             {{/autoForm}}
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ {{else}}
+ <div class="container">
+   <div class="row"></div>
+   <div class="row"></div>
+   <div class="row">
+     <div class="col s12">
+       <div class="card white hoverable">
+         <div class="card-content blue-text">
+           <span class="card-title"><h3 class="center-align capitalize">{{username}}</h3></span>
+           <p class="center-align grey-text capitalize flow-text">{{firstName}} {{lastName}}</p>
+           <div class="divider"></div>
+           <div class="section">
+             <div class="row">
+               <div class="col s6">
+                 <h4 class="center-align">SAT</h4>
+               </div>
+               <div class="col s6">
+                 <h4 class="center-align">Other</h4>
+               </div>
+             </div>
+             <div class="row">
+               <div class="col s6">
+                 <p class="center-align cont"><span class="grey-text">Reading:</span> {{reading}}</p>
+               </div>
+               <div class="col s6">
+                 <p class="center-align cont"><span class="grey-text">TOEFL:</span> {{toefl}}</p>
+               </div>
+             </div>
+             <div class="row">
+               <div class="col s6">
+                 <p class="center-align cont"><span class="grey-text">Mathematics:</span> {{math}}</p>
+               </div>
+               <div class="col s6">
+                 <p class="center-align cont"><span class="grey-text">ACT:</span> {{act}}</p>
+               </div>
+             </div>
+             <div class="row">
+               <div class="col s6">
+                 <p class="center-align cont"><span class="grey-text">Writing:</span> {{writing}}</p>
+               </div>
+               <div class="col s6">
+                 <p class="center-align cont"><span class="grey-text">GPA:</span> {{gpa}}</p>
+               </div>
+             </div>
+           </div>
+           <div class="card-action">
+             <div class="row">
+               <div class="col s1 offset-s11">
+                   <a class="btn-floating btn-large red">
+                     <i class="material-icons edit">mode_edit</i>
+                   </a>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ {{/if}}
+</template>

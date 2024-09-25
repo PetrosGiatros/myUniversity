@@ -1,0 +1,155 @@
+<template name="dashboard">
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper blue lighten-1">
+        <a href="#" class="brand-logo center">My University</a>
+        <ul class="right hide-on-med-and-down">
+          <li class="active"><a href="/p/dashboard"><i class="material-icons left">dashboard</i>Dashboard</a></li>
+          <li><a href="/p/profile"><i class="material-icons left">perm_identity</i>Profile</a></li>
+          <li><a href="/p/about"><i class="material-icons left">info_outline</i>About Us</a></li>
+          <li id="loginText">
+            {{#if currentUser}}
+              {{> logoutBtn}}
+            {{else}}
+              {{> loginBtn}}
+            {{/if}}
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  {{#if currentUser}}
+  {{else}}
+    {{> redirect}}
+  {{/if}}
+  <div class="row"></div>
+  <div class="row"></div>
+  <div class="row">
+    <div class="container">
+      {{#each unis}}
+        {{> uni}}
+      {{/each}}
+    </div>
+  </div>
+</template>
+
+<template name="uni">
+  <div class="card hoverable">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="{{imgsrc}}"/>
+      <span class="card-title title-control">{{name}}</span>
+    </div>
+    <div class="card-content blue-text">
+      <div class="row">
+        <div class="col s12">
+          <span class="activator text-darken-4"><i class="material-icons right pointer black-text">more_vert</i></span>
+          <h4 class="center-align">Main Requirements</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s3">
+          <p class="flow-text center-align">SAT Reading: <span class="grey-text">{{minreading}} - {{maxreading}}</span></p>
+        </div>
+        <div class="col s3">
+          <p class="flow-text center-align">SAT Writing: <span class="grey-text">{{minwriting}} - {{maxwriting}}</span></p>
+        </div>
+        <div class="col s3">
+          <p class="flow-text center-align">SAT Math: <span class="grey-text">{{minmath}} - {{maxwriting}}</span></p>
+        </div>
+        <div class="col s3">
+          <p class="flow-text center-align">ACT: <span class="grey-text">{{minact}} - {{maxact}}</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title">{{name}}<i class="material-icons right">close</i></span>
+      <div class="row">
+        <div class="col s12">
+          {{> Template.dynamic template=description}}
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <div class="row">
+          <div class="col s6">
+            <h4 class="center-align blue-text">Academics</h4>
+          </div>
+          <div class="col s6">
+            <h4 class="center-align blue-text">Athletics</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            <ul>
+              {{> Template.dynamic template=academics }}
+            </ul>
+          </div>
+          <div class="col s6">
+            <ul>
+              {{> Template.dynamic template=athletics }}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <div class="row">
+          <div class="col s6">
+            {{> Template.dynamic template=contactinfo }}
+          </div>
+          <div class="col s6">
+            {{> Template.dynamic template=internationinfo }}
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="section blue-text">
+        <div class="row">
+          <div class="col s12">
+            <h4 class="center-align">Full Entry Requirements</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            <h4 class="center-align">SAT</h4>
+          </div>
+          <div class="col s6">
+            <h4 class="center-align">Other</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            <p class="center-align cont"><span class="grey-text">Reading:</span> {{minreading}} - {{maxreading}}</p>
+          </div>
+          <div class="col s6">
+            <p class="center-align cont"><span class="grey-text">TOEFL:</span> {{mintoefl}} - {{maxtoefl}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            <p class="center-align cont"><span class="grey-text">Mathematics:</span> {{minmath}} - {{maxmath}}</p>
+          </div>
+          <div class="col s6">
+            <p class="center-align cont"><span class="grey-text">ACT:</span> {{minact}} - {{maxact}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            <p class="center-align cont"><span class="grey-text">Writing:</span> {{minwriting}} - {{maxwriting}}</p>
+          </div>
+          <div class="col s6">
+            <p class="center-align cont"><span class="grey-text">GPA:</span> {{mingpa}} - {{maxgpa}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <div class="row">
+          <div class="col s2 offset-s5">
+            <a href="{{applylink}}" class="btn-large waves-effect waves-light">Apply now!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

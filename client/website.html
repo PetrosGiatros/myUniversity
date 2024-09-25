@@ -1,0 +1,112 @@
+<template name="siteHome">
+  <!--<img id="logo" src="http://i.imgur.com/Bn07LCE.png">-->
+  <nav>
+    <div class="nav-wrapper blue lighten-1">
+      <a href="#" class="brand-logo center">My University</a>
+      <ul class="right hide-on-med-and-down">
+          <li class="active"><a href="#">Home</a></li>
+          {{#if currentUser}}
+            {{> ifLogin}}
+          {{/if}}
+          <li><a href="/p/about"><i class="material-icons left">info_outline</i>About Us</a></li>
+          <li id="loginText">
+            {{#if currentUser}}
+              {{> logoutBtn}}
+            {{else}}
+              {{> loginBtn}}
+            {{/if}}
+          </li>
+      </ul>
+    </div>
+  </nav>
+
+  {{#if currentUser}}
+    {{> redirectdash}}
+  {{/if}}
+
+  <div class="container">
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row">
+      <div class="col s12">
+        <div class="card blue lighten-1 z-depth-2">
+          <div class="card-content white-text">
+            <span class="card-title"><h4>Welcome to MyUniversity!</h4></span>
+            <div class="row"></div>
+            <div class="row">
+              <div class="col s8">
+                <h5 class="flow-text"><b>Dear visitors</b>,</h5>
+                <p class="flow-text">
+                  MyUniversity is an online platform created by a team of students in Thessaloniki, Greece.
+                  This website aims to help you select a university you can enter, based on your grades.
+                  Many students that graduate from High School struggle to choose a University because most of the time they have the ability to enter so many of them.
+                  In order to help alleviate that problem, MyUniversity offers you a way to quickly look through Universities you can enter and get information about them.
+                </p>
+              </div>
+              <div class="col s4 hide-on-med-and-down">
+                <img class="responsive-img" src="/images/logo.png" height="293" width="390">
+              </div>
+            </div>
+            <div class="row"></div>
+            <div class="row">
+              <div class="col s6">
+                <p class="flow-text">In order to get started, simply create an account and head to the dashboard!</p>
+              </div>
+            </div>
+            <div class="row"></div>
+            <div class="row">
+              <div class="col s6">
+                <p class="flow-text">With pure love; the organizing team of <img src="/images/myu.png" align="middle" width="155" height="50"> ,</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4">
+                <p class="flow-text">George Grivas</p>
+              </div>
+              <div class="col s4">
+                <p class="flow-text">Petros Giatroutsikos</p>
+              </div>
+              <div class="col s4">
+                <p class="flow-text">Dimitris Dimitrakopoulos</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4">
+                <img src="/images/grivas.png" width="155" height="50">
+              </div>
+              <div class="col s4">
+                <img src="/images/petros.png" width="155" height="50">
+              </div>
+              <div class="col s4">
+                <img src="/images/di.png" width="155" height="50">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="redirectdash">
+  <p>Redirecting...</p>
+</template>
+
+<template name="p">
+  <div id="p">
+    {{>Template.dynamic template=getTemplateName}}
+  </div>
+</template>
+
+<template name="ifLogin">
+  <li><a href="/p/dashboard"><i class="material-icons left">dashboard</i>Dashboard</a></li>
+  <li><a href="/p/profile"><i class="material-icons left">perm_identity</i>Profile</a></li>
+</template>
+
+<template name="loginBtn">
+  <a href="/p/loginPage" class="waves-effect waves-light btn">Login</a>
+</template>
+
+<template name="logoutBtn">
+  <a href="#" class="logout waves-effect waves-light btn grey">Logout</a>
+</template>
